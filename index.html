@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <!-- LOGIN / SIGNUP PAGE -->
     <div id="authPage" class="page-container">
       <div class="auth-container">
         <h1 class="auth-logo">CampusCredit</h1>
@@ -25,11 +26,15 @@
       </div>
     </div>
 
+    <!-- MAIN DASHBOARD PAGE -->
     <div id="mainPage" class="page-container hidden">
+      <!-- Navigation Bar -->
       <nav class="navbar">
         <div class="logo">CampusCredit</div>
-        <ul>
+        <button id="mobileMenuToggle" class="mobile-menu-toggle">☰</button>
+        <ul id="navLinksContainer">
           <li><a href="#" id="homeNav" class="active">Home</a></li>
+          <li><a href="#" id="lendNav">Lend</a></li>
           <li><a href="#" id="profileNav">Profile</a></li>
           <li><a href="#" id="aboutNav">About Us</a></li>
           <li><a href="#" id="contactNav">Contact</a></li>
@@ -38,6 +43,7 @@
       </nav>
 
       <main class="content-wrapper">
+        <!-- Home Page -->
         <section id="homeSection" class="content-section">
           <div class="header">
             <h2>Welcome back, Student!</h2>
@@ -46,6 +52,7 @@
             </div>
           </div>
 
+          <!-- Dashboard Stats -->
           <div class="stats-grid">
             <div class="stat-card">
               <h4>Your Balance</h4>
@@ -69,51 +76,186 @@
             </div>
           </div>
 
+          <!-- Quick Actions -->
           <div class="quick-actions">
             <button class="btn btn-primary" id="borrowBtn">
               💸 Request a New Loan
             </button>
           </div>
 
+          <!-- Live Loan Requests -->
           <div class="listings-section">
             <h3>Live Loan Requests</h3>
-            <table class="listings-table">
-              <thead>
-                <tr>
-                  <th>Student</th>
-                  <th>Amount</th>
-                  <th>Reason</th>
-                  <th>Rating</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Rohan V. (F-12)</td>
-                  <td>₹1,000</td>
-                  <td>Textbooks</td>
-                  <td>⭐⭐⭐⭐☆</td>
-                  <td><button class="btn btn-secondary btn-sm">Lend</button></td>
-                </tr>
-                <tr>
-                  <td>Priya S. (G-10)</td>
-                  <td>₹500</td>
-                  <td>Mess Bill</td>
-                  <td>⭐⭐⭐⭐⭐</td>
-                  <td><button class="btn btn-secondary btn-sm">Lend</button></td>
-                </tr>
-                <tr>
-                  <td>Amit K. (F-13)</td>
-                  <td>₹2,000</td>
-                  <td>Project Fees</td>
-                  <td>⭐⭐⭐☆☆</td>
-                  <td><button class="btn btn-secondary btn-sm">Lend</button></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive-wrapper">
+              <table class="listings-table">
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Amount</th>
+                    <th>Reason</th>
+                    <th>Rating</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rohan V. (F-12)</td>
+                    <td>₹1,000</td>
+                    <td>Textbooks</td>
+                    <td>⭐⭐⭐⭐☆</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Lend</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Priya S. (G-10)</td>
+                    <td>₹500</td>
+                    <td>Mess Bill</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Lend</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Amit K. (F-13)</td>
+                    <td>₹2,000</td>
+                    <td>Project Fees</td>
+                    <td>⭐⭐⭐☆☆</td>
+                    <td>
+                      <button class="btn btn-secondary btn-sm">Lend</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
+        <!-- Lend Page -->
+        <section id="lendSection" class="content-section hidden">
+          <h2>Lend Money</h2>
+          <p class="section-subtitle">
+            Post an offer or fund an existing request.
+          </p>
+          <div class="lend-page-layout">
+            <!-- Post an Offer Form -->
+            <div class="form-container">
+              <h3>Post a New Loan Offer</h3>
+              <div class="form-section" id="lendForm">
+                <label for="lenderName">Full Name</label>
+                <input
+                  type="text"
+                  id="lenderName"
+                  placeholder="Your Full Name"
+                />
+
+                <label for="amountToLend">Amount (₹)</label>
+                <input
+                  type="number"
+                  id="amountToLend"
+                  placeholder="e.g., 2000"
+                />
+
+                <label for="interestRate">Preferred Interest Rate (%)</label>
+                <input
+                  type="number"
+                  id="interestRate"
+                  placeholder="e.g., 2 (per month)"
+                />
+
+                <label for="loanDuration">Loan Duration</label>
+                <select id="loanDuration">
+                  <option value="30">30 Days</option>
+                  <option value="60">60 Days</option>
+                  <option value="90">90 Days</option>
+                </select>
+
+                <label for="lenderEmail">Email</label>
+                <input
+                  type="email"
+                  id="lenderEmail"
+                  placeholder="Your College Email"
+                />
+
+                <label for="lenderBatch">Batch</label>
+                <input
+                  type="text"
+                  id="lenderBatch"
+                  placeholder="e.g. 2023-27"
+                />
+
+                <label for="lenderMobile">Mobile Number</label>
+                <input
+                  type="tel"
+                  id="lenderMobile"
+                  placeholder="Your Mobile Number"
+                />
+
+                <button class="btn btn-primary" onclick="submitLendOffer()">
+                  Submit Offer
+                </button>
+              </div>
+            </div>
+
+            <!-- Fund a Request Table -->
+            <div class="listings-container">
+              <h3>Or, Fund an Existing Request</h3>
+              <div class="table-responsive-wrapper">
+                <table class="listings-table">
+                  <thead>
+                    <tr>
+                      <th>Student</th>
+                      <th>Amount</th>
+                      <th>Reason</th>
+                      <th>Rating</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Rohan V. (F-12)</td>
+                      <td>₹1,000</td>
+                      <td>Textbooks</td>
+                      <td>⭐⭐⭐⭐☆</td>
+                      <td>
+                        <button class="btn btn-secondary btn-sm">Lend</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Priya S. (G-10)</td>
+                      <td>₹500</td>
+                      <td>Mess Bill</td>
+                      <td>⭐⭐⭐⭐⭐</td>
+                      <td>
+                        <button class="btn btn-secondary btn-sm">Lend</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Amit K. (F-13)</td>
+                      <td>₹2,000</td>
+                      <td>Project Fees</td>
+                      <td>⭐⭐⭐☆☆</td>
+                      <td>
+                        <button class="btn btn-secondary btn-sm">Lend</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Sneha P. (H-1)</td>
+                      <td>₹1,500</td>
+                      <td>Laptop Repair</td>
+                      <td>⭐⭐⭐⭐☆</td>
+                      <td>
+                        <button class="btn btn-secondary btn-sm">Lend</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Profile Page -->
         <section id="profileSection" class="content-section hidden">
           <div class="profile-header">
             <img
@@ -139,6 +281,7 @@
           </div>
 
           <div class="profile-content">
+            <!-- Overview Tab -->
             <div id="overview" class="tab-content active">
               <h3>Profile Details</h3>
               <div class="profile-details-grid">
@@ -148,7 +291,7 @@
                 </div>
                 <div class="detail-item">
                   <strong>Email:</strong>
-                  <p>puransh@gmail.com</p>
+                  <p>puransh.tiwari@college.edu</p>
                 </div>
                 <div class="detail-item">
                   <strong>Age:</strong>
@@ -188,53 +331,66 @@
               </div>
             </div>
 
+            <!-- History Tab -->
             <div id="history" class="tab-content hidden">
               <h3>Transaction History</h3>
-              <table class="listings-table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>28 Oct 2025</td>
-                    <td><span class="tag tag-borrow">Borrowed</span></td>
-                    <td>₹500</td>
-                    <td><span class="tag tag-paid">Paid</span></td>
-                  </tr>
-                  <tr>
-                    <td>25 Oct 2025</td>
-                    <td><span class="tag tag-lend">Lent</span></td>
-                    <td>₹1,000</td>
-                    <td><span class="tag tag-pending">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>15 Oct 2025</td>
-                    <td><span class="tag tag-borrow">Borrowed</span></td>
-                    <td>₹2,000</td>
-                    <td><span class="tag tag-paid">Paid</span></td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive-wrapper">
+                <table class="listings-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>28 Oct 2025</td>
+                      <td><span class="tag tag-borrow">Borrowed</span></td>
+                      <td>₹500</td>
+                      <td><span class="tag tag-paid">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>25 Oct 2025</td>
+                      <td><span class="tag tag-lend">Lent</span></td>
+                      <td>₹1,000</td>
+                      <td><span class="tag tag-pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <td>15 Oct 2025</td>
+                      <td><span class="tag tag-borrow">Borrowed</span></td>
+                      <td>₹2,000</td>
+                      <td><span class="tag tag-paid">Paid</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
+            <!-- Settings Tab -->
             <div id="settings" class="tab-content hidden">
               <h3>Account Settings</h3>
               <div class="form-section" style="display: block; box-shadow: none">
                 <label for="updateMobile">Mobile Number</label>
-                <input type_="tel" id="updateMobile" placeholder="Mobile Number" />
+                <input
+                  type="tel"
+                  id="updateMobile"
+                  placeholder="Mobile Number"
+                />
                 <label for="updatePassword">New Password</label>
-                <input type="password" id="updatePassword" placeholder="New Password" />
+                <input
+                  type="password"
+                  id="updatePassword"
+                  placeholder="New Password"
+                />
                 <button classall="btn btn-primary">Update Settings</button>
               </div>
             </div>
           </div>
         </section>
 
+        <!-- About Us Page -->
         <section id="aboutSection" class="content-section hidden">
           <div class="about-container">
             <h2>About CampusCredit</h2>
@@ -253,8 +409,9 @@
                 <p>
                   Our mission is to create a supportive financial ecosystem
                   within campuses, promoting trust, transparency, and
-                  responsible lending 
-                </WELCOME>
+                  responsible lending — all powered by smart AI and community
+                  reputation.
+                </p>
               </div>
               <div class="about-image">
                 
@@ -263,6 +420,7 @@
           </div>
         </section>
 
+        <!-- Contact Page -->
         <section id="contactSection" class="content-section hidden">
           <h2>Meet the Team</h2>
           <div class="contact-container">
@@ -278,7 +436,7 @@
               <img src="https://i.pravatar.cc/150?img=22" alt="Ashutosh" />
               <h3>Ashutosh Vishwkarma</h3>
               <p>Batch: F-13</p>
-              <p>992401030129@mail.jiit.ac.in</p>
+              <p>992401030127@mail.jiit.ac.in</p>
               <strong>Backend Engineer | Vision: Build Trust through Tech</strong>
             </div>
           </div>
@@ -286,6 +444,7 @@
       </main>
     </div>
 
+    <!-- Borrow Form Modal -->
     <div id="borrowModal" class="modal-backdrop hidden">
       <div class="modal-content">
         <div class="modal-header">
@@ -296,31 +455,38 @@
           <div class="form-section" id="borrowForm">
             <label for="name">Full Name</label>
             <input type="text" id="name" placeholder="Full Name" />
-            
+
             <label for="amount">Amount Needed (₹)</label>
             <input type="number" id="amount" placeholder="e.g., 500" />
 
             <label for="reason">Reason for Loan</label>
-            <input type="text" id="reason" placeholder="e.g., Textbooks, Mess Bill" />
+            <input
+              type="text"
+              id="reason"
+              placeholder="e.g., Textbooks, Mess Bill"
+            />
 
             <label for="branch">Branch</label>
             <input type="text" id="branch" placeholder="Branch" />
-            
+
             <label for="batch">Batch (e.g. 2023-27)</label>
             <input type="text" id="batch" placeholder="Batch (e.g. 2023-27)" />
-            
+
             <label for="mobile">Mobile Number</label>
             <input type="tel" id="mobile" placeholder="Mobile Number" />
-            
+
             <label for="clgEmail">College Email</label>
             <input type="email" id="clgEmail" placeholder="College Email" />
-            
-            <button class="btn btn-primary" onclick="submitBorrowForm()">Submit Request</button>
+
+            <button class="btn btn-primary" onclick="submitBorrowForm()">
+              Submit Request
+            </button>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- WhatsApp Floating Icon -->
     <a
       href="https://wa.me/917651895834"
       target="_blank"

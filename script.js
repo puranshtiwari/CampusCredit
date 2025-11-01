@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
   authButton.onclick = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    if (!email || !password) return alert("Please fill all fields!");
+    if (!email || !password) {
+      // Use a custom alert/modal later
+      console.error("Please fill all fields!");
+      return;
+    }
 
     // Successful login
     authPage.classList.add("hidden");
@@ -28,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mainPage.style.display = "flex"; // Use flex as defined in new CSS
     authPage.style.display = "none";
   };
-  
+
   logoutBtn.onclick = () => {
     // Successful logout
     authPage.classList.remove("hidden");
@@ -39,20 +43,30 @@ document.addEventListener("DOMContentLoaded", () => {
     showSection("home");
   };
 
+  // --- MOBILE MENU TOGGLE ---
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const navLinksContainer = document.getElementById("navLinksContainer");
+
+  mobileMenuToggle.onclick = () => {
+    navLinksContainer.classList.toggle("active");
+  };
+
   // --- SPA NAVIGATION ---
   const sections = {
     home: document.getElementById("homeSection"),
+    lend: document.getElementById("lendSection"), // Added Lend
     profile: document.getElementById("profileSection"),
     about: document.getElementById("aboutSection"),
     contact: document.getElementById("contactSection"),
   };
-  
+
   const navLinks = {
     home: document.getElementById("homeNav"),
+    lend: document.getElementById("lendNav"), // Added Lend
     profile: document.getElementById("profileNav"),
     about: document.getElementById("aboutNav"),
     contact: document.getElementById("contactNav"),
-  }
+  };
 
   function showSection(sectionId) {
     // Hide all sections
@@ -64,12 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update active nav link
     Object.values(navLinks).forEach((a) => a.classList.remove("active"));
-    if(navLinks[sectionId]) {
-        navLinks[sectionId].classList.add("active");
+    if (navLinks[sectionId]) {
+      navLinks[sectionId].classList.add("active");
     }
+    
+    // Hide mobile menu after click
+    navLinksContainer.classList.remove("active");
+    // Scroll to top of page
+    window.scrollTo(0, 0);
   }
 
   navLinks.home.onclick = () => showSection("home");
+  navLinks.lend.onclick = () => showSection("lend"); // Added Lend
   navLinks.profile.onclick = () => showSection("profile");
   navLinks.about.onclick = () => showSection("about");
   navLinks.contact.onclick = () => showSection("contact");
@@ -81,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const borrowModal = document.getElementById("borrowModal");
   const borrowBtn = document.getElementById("borrowBtn");
   const closeModal = document.getElementById("closeModal");
-  const borrowForm = document.getElementById("borrowForm");
 
   borrowBtn.onclick = () => {
     borrowModal.classList.remove("hidden");
@@ -97,11 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
       borrowModal.classList.add("hidden");
     }
   };
-  
-  // LEND BUTTON
+
+  // LEND BUTTON (on Home Page Stat Card)
   const lendBtn = document.getElementById("lendBtn");
   lendBtn.onclick = () => {
-    alert("Feature coming soon: View and manage your lending portfolio!");
+    showSection("lend"); // Changed from alert to navigation
   };
 
   // SUBMIT BORROW FORM
@@ -110,14 +129,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const amount = document.getElementById("amount").value;
     const reason = document.getElementById("reason").value;
 
-    if (!name || !amount || !reason)
-      return alert("Please fill all details!");
-
-    alert(`Borrow request for ₹${amount} submitted successfully!\nName: ${name}`);
+    if (!name || !amount || !reason) {
+        console.error("Please fill all details!");
+        // We avoid alert()
+        return;
+    }
+    
+    console.log(`Borrow request for ₹${amount} submitted successfully! Name: ${name}`);
     // Assuming 'borrowForm' is the ID of the form inside the modal
     document.querySelector("#borrowModal .form-section").reset();
     borrowModal.classList.add("hidden");
   };
+
+  // --- SUBMIT LEND OFFER FORM --- (New Function)
+  window.submitLendOffer = () => {
+    const name = document.getElementById("lenderName").value;
+    const amount = document.getElementById("amountToLend").value;
+    const rate = document.getElementById("interestRate").value;
+
+    if (!name || !amount || !rate) {
+        console.error("Please fill all details!");
+        // We avoid alert()
+        return;
+    }
+
+    console.log(`Lend offer for ₹${amount} at ${rate}% submitted! Name: ${name}`);
+    document.getElementById("lendForm").reset();
+    
+    // Maybe show a success message here
+  };
+
 
   // --- PROFILE TABS ---
   const tabLinks = document.querySelectorAll(".tab-link");
@@ -143,6 +184,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-  
- 
 });
