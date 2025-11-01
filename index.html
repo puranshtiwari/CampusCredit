@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusCredit - Student Lending Platform</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="authPage" class="page-container">
+      <div class="auth-container">
+        <h1 class="auth-logo">CampusCredit</h1>
+        <h2 id="authTitle">Login</h2>
+        <input type="email" id="email" placeholder="College Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <button id="authButton" class="btn btn-primary">Login</button>
+        <div class="auth-toggle" id="toggleAuth">
+          Don’t have an account? Sign up
+        </div>
+      </div>
+    </div>
+
+    <div id="mainPage" class="page-container hidden">
+      <nav class="navbar">
+        <div class="logo">CampusCredit</div>
+        <ul>
+          <li><a href="#" id="homeNav" class="active">Home</a></li>
+          <li><a href="#" id="profileNav">Profile</a></li>
+          <li><a href="#" id="aboutNav">About Us</a></li>
+          <li><a href="#" id="contactNav">Contact</a></li>
+          <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+
+      <main class="content-wrapper">
+        <section id="homeSection" class="content-section">
+          <div class="header">
+            <h2>Welcome back, Student!</h2>
+            <div class="profile-icon" id="profileIcon" title="View Profile">
+              👤
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h4>Your Balance</h4>
+              <p>₹1,500</p>
+              <span class="stat-change">+500 this week</span>
+            </div>
+            <div class="stat-card">
+              <h4>Total Lent</h4>
+              <p>₹4,000</p>
+              <span class="stat-change">2 Active Loans</span>
+            </div>
+            <div class="stat-card">
+              <h4>Total Borrowed</h4>
+              <p>₹2,500</p>
+              <span class="stat-change">1 Active Loan</span>
+            </div>
+            <div class="stat-card action-card" id="lendBtn">
+              💰
+              <h4>Lend Money</h4>
+              <p>Help a peer & earn ratings</p>
+            </div>
+          </div>
+
+          <div class="quick-actions">
+            <button class="btn btn-primary" id="borrowBtn">
+              💸 Request a New Loan
+            </button>
+          </div>
+
+          <div class="listings-section">
+            <h3>Live Loan Requests</h3>
+            <table class="listings-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Amount</th>
+                  <th>Reason</th>
+                  <th>Rating</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rohan V. (F-12)</td>
+                  <td>₹1,000</td>
+                  <td>Textbooks</td>
+                  <td>⭐⭐⭐⭐☆</td>
+                  <td><button class="btn btn-secondary btn-sm">Lend</button></td>
+                </tr>
+                <tr>
+                  <td>Priya S. (G-10)</td>
+                  <td>₹500</td>
+                  <td>Mess Bill</td>
+                  <td>⭐⭐⭐⭐⭐</td>
+                  <td><button class="btn btn-secondary btn-sm">Lend</button></td>
+                </tr>
+                <tr>
+                  <td>Amit K. (F-13)</td>
+                  <td>₹2,000</td>
+                  <td>Project Fees</td>
+                  <td>⭐⭐⭐☆☆</td>
+                  <td><button class="btn btn-secondary btn-sm">Lend</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="profileSection" class="content-section hidden">
+          <div class="profile-header">
+            <img
+              src="https://i.pravatar.cc/150?img=12"
+              alt="Profile Picture"
+              class="profile-pic"
+            />
+            <div class="profile-header-info">
+              <h2>Puransh Tiwari</h2>
+              <p>Enrollment: 23F13CS041</p>
+              <div class="profile-rating">
+                <strong>Overall Rating:</strong> ⭐⭐⭐⭐☆
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-tabs">
+            <button class="tab-link active" data-tab="overview">
+              Overview
+            </button>
+            <button class="tab-link" data-tab="history">Loan History</button>
+            <button class="tab-link" data-tab="settings">Settings</button>
+          </div>
+
+          <div class="profile-content">
+            <div id="overview" class="tab-content active">
+              <h3>Profile Details</h3>
+              <div class="profile-details-grid">
+                <div class="detail-item">
+                  <strong>Full Name:</strong>
+                  <p>Puransh Tiwari</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Email:</strong>
+                  <p>puransh@gmail.com</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Age:</strong>
+                  <p>21</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Batch:</strong>
+                  <p>F-13 (2023-2027)</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Lender Rating:</strong>
+                  <p>⭐⭐⭐⭐☆ (12 Reviews)</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Borrower Rating:</strong>
+                  <p>⭐⭐⭐⭐☆ (8 Reviews)</p>
+                </div>
+              </div>
+              <h3>Financial Summary</h3>
+              <div class="profile-details-grid">
+                <div class="detail-item">
+                  <strong>Total Money Lent:</strong>
+                  <p>₹4,000</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Total Money Borrowed:</strong>
+                  <p>₹2,500</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Active Loans (Lending):</strong>
+                  <p>2</p>
+                </div>
+                <div class="detail-item">
+                  <strong>Active Loans (Borrowing):</strong>
+                  <p>1</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="history" class="tab-content hidden">
+              <h3>Transaction History</h3>
+              <table class="listings-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>28 Oct 2025</td>
+                    <td><span class="tag tag-borrow">Borrowed</span></td>
+                    <td>₹500</td>
+                    <td><span class="tag tag-paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>25 Oct 2025</td>
+                    <td><span class="tag tag-lend">Lent</span></td>
+                    <td>₹1,000</td>
+                    <td><span class="tag tag-pending">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>15 Oct 2025</td>
+                    <td><span class="tag tag-borrow">Borrowed</span></td>
+                    <td>₹2,000</td>
+                    <td><span class="tag tag-paid">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="settings" class="tab-content hidden">
+              <h3>Account Settings</h3>
+              <div class="form-section" style="display: block; box-shadow: none">
+                <label for="updateMobile">Mobile Number</label>
+                <input type_="tel" id="updateMobile" placeholder="Mobile Number" />
+                <label for="updatePassword">New Password</label>
+                <input type="password" id="updatePassword" placeholder="New Password" />
+                <button classall="btn btn-primary">Update Settings</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="aboutSection" class="content-section hidden">
+          <div class="about-container">
+            <h2>About CampusCredit</h2>
+            <p class="about-subtitle">
+              A student-driven peer-to-peer lending platform.
+            </p>
+            <div class="about-content">
+              <div class="about-text">
+                <h3>Our Mission</h3>
+                <p>
+                  CampusCredit is where students can help each other
+                  financially. Whether it’s buying books, paying rent, or
+                  handling emergencies — CampusCredit connects students who can
+                  lend with those who need help.
+                </p>
+                <p>
+                  Our mission is to create a supportive financial ecosystem
+                  within campuses, promoting trust, transparency, and
+                  responsible lending 
+                </WELCOME>
+              </div>
+              <div class="about-image">
+                
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contactSection" class="content-section hidden">
+          <h2>Meet the Team</h2>
+          <div class="contact-container">
+            <div class="contact-card">
+              <img src="https://i.pravatar.cc/150?img=12" alt="Puransh" />
+              <h3>Puransh Tiwari</h3>
+              <p>Batch: F-13</p>
+              <p>992401030127@mail.jiit.ac.in</p>
+              <strong>Frontend Developer | Vision: Empower Students</strong>
+            </div>
+
+            <div class="contact-card">
+              <img src="https://i.pravatar.cc/150?img=22" alt="Ashutosh" />
+              <h3>Ashutosh Vishwkarma</h3>
+              <p>Batch: F-13</p>
+              <p>992401030129@mail.jiit.ac.in</p>
+              <strong>Backend Engineer | Vision: Build Trust through Tech</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="borrowModal" class="modal-backdrop hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Borrow Money Form</h3>
+          <span class="modal-close" id="closeModal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="form-section" id="borrowForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Full Name" />
+            
+            <label for="amount">Amount Needed (₹)</label>
+            <input type="number" id="amount" placeholder="e.g., 500" />
+
+            <label for="reason">Reason for Loan</label>
+            <input type="text" id="reason" placeholder="e.g., Textbooks, Mess Bill" />
+
+            <label for="branch">Branch</label>
+            <input type="text" id="branch" placeholder="Branch" />
+            
+            <label for="batch">Batch (e.g. 2023-27)</label>
+            <input type="text" id="batch" placeholder="Batch (e.g. 2023-27)" />
+            
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" placeholder="Mobile Number" />
+            
+            <label for="clgEmail">College Email</label>
+            <input type="email" id="clgEmail" placeholder="College Email" />
+            
+            <button class="btn btn-primary" onclick="submitBorrowForm()">Submit Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a
+      href="https://wa.me/917651895834"
+      target="_blank"
+      class="whatsapp-icon"
+      title="Chat with CampusCredit Bot"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+      />
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
